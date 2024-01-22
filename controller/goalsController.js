@@ -6,7 +6,7 @@ const GOALS = require("../models/goalsModel")
 
 const getAllGoals = async(req, res) => {
     try {
-      const goals = await GOALS.find()
+      const goals = await GOALS.find().sort("-createdAt")
       res.status(200).json({message: "success", goals, NumofGoals: goals.length})
     } catch (error) {
         res.status(404).json({message: "failed",error})
